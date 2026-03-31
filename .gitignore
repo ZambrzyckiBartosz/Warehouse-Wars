@@ -1,0 +1,6 @@
+.idea
+./AICorporation.Api/bin
+./AICorporation.Api/obj
+./AICorporation.Api/Properties
+./AICorporation.Core/bin
+./AICorporation.Core/obj
