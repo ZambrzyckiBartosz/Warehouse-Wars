@@ -1,4 +1,4 @@
-
+namespace AICorporation.Core.Models;
 public class Company
 {
     public string CompanyName { get; init; }
