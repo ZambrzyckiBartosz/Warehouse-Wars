@@ -4,15 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 [Route("[controller]")]
 public class CompanyController : ControllerBase
 {
-    private readonly Company _company;
+    private readonly CompanyService _company;
 
-    public CompanyController(Company company)
+    public CompanyController(CompanyService company)
     {
         _company = company;
     }
 
-    [HttpGet]
-    public Company GetCompanyInfo()
+    //[HttpGet]
+  /*  public Company GetCompanyInfo()
     {
         return _company;
     }
@@ -28,4 +28,5 @@ public class CompanyController : ControllerBase
 
         return Ok(_company);
     }
+    */
 }

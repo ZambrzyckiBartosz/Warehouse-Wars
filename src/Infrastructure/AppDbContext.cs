@@ -6,6 +6,10 @@ public class User
     public int id { get; set; }
     public string? username { get; set; }
     public string? password { get; set; }
+
+    public string? CompanyName { get; set; }
+
+    public decimal ComapnyBalance { get; set; }
     public List<Inventory>? inventory { get; set; }
 }
 
@@ -13,6 +17,8 @@ public class Inventory
 {
     public int id { get; set; }
     public int userid { get; set; }
+
+    public int level { get; set; }
     public int warehouseid { get; set; }
     public Warehouse? warehouse { get; set; }
     public int quantity { get; set; }

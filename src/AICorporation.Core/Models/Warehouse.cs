@@ -12,6 +12,12 @@ public class Warehouse : Building
               RevenuePerItem = revenuePerItem;
               BaseMaintanceCost = baseMaintanceCost;
        }
+
+       //For Database connection
+       private Warehouse()
+       {
+
+       }
        public int MaxCapacity { get; private set; }
        public int CurrentStock { get; private set; }
        public decimal RevenuePerItem { get; private set; }
