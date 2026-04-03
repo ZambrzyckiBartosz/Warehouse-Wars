@@ -18,11 +18,13 @@ public class CompanyController : ControllerBase
     }
 
     [HttpPost("buy-warehouse")]
-    public Company CompanyUpdate([FromBody] BuyWarehouseRequest request)
+    public ActionResult<Company> CompanyUpdate([FromBody] BuyWarehouseRequest request)
     {
         var newWarehouse = new Warehouse(2137,request.name,1,50000,10000,31,5);
-        _company.BuyBuilding(newWarehouse,42013);
+        var newWarehouseCost = 4213;
 
-        return _company;
+        if(!_company.BuyBuilding(newWarehouse,newWarehouseCost)) return BadRequest("U are poor guy");
+
+        return Ok(_company);
     }
 }
