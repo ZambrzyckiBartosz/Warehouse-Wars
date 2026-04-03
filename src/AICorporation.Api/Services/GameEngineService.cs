@@ -18,7 +18,7 @@ public class GameEngineService : BackgroundService
             using (var serviceScope = _scopeFactory.CreateScope())
             {
                 var db = serviceScope.ServiceProvider.GetService<AppDbContext>();
-                var myCompany = db?.Users.Include(u => u.inventory).FirstOrDefault();
+                var myCompany = db?.Users.Include(u => u.inventory).OrderBy(u=> u.id).FirstOrDefault();
                 if (myCompany != null)
                 {
                     List<Building> tempBuildings = new List<Building>();
