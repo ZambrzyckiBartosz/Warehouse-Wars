@@ -3,6 +3,10 @@
 GET {{AICorporation.Api_HostAddress}}/weatherforecast/
 ###
 GET http://localhost:5094/Company/
+
+###
+
+POST http://localhost:5094/Company/buy-warehouse
 Accept: application/json
 
 ###

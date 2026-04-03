@@ -16,4 +16,13 @@ public class CompanyController : ControllerBase
     {
         return _company;
     }
+
+    [HttpPost("buy-warehouse")]
+    public Company CompanyUpdate()
+    {
+        var newWarehouse = new Warehouse(2137,"New Warehouse",1,50000,10000,31,5);
+        _company.BuyBuilding(newWarehouse,42013);
+
+        return _company;
+    }
 }
