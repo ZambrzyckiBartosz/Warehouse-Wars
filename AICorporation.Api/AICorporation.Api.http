@@ -8,5 +8,11 @@ GET http://localhost:5094/Company/
 
 POST http://localhost:5094/Company/buy-warehouse
 Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "siemaneczko"
+}
+
 
 ###

@@ -18,9 +18,9 @@ public class CompanyController : ControllerBase
     }
 
     [HttpPost("buy-warehouse")]
-    public Company CompanyUpdate()
+    public Company CompanyUpdate([FromBody] BuyWarehouseRequest request)
     {
-        var newWarehouse = new Warehouse(2137,"New Warehouse",1,50000,10000,31,5);
+        var newWarehouse = new Warehouse(2137,request.name,1,50000,10000,31,5);
         _company.BuyBuilding(newWarehouse,42013);
 
         return _company;
