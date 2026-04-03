@@ -2,7 +2,7 @@
 public abstract class Building
 {
     public int ID { get; init; }
-    public string Name { get; init; }
+    public string? Name { get; init; }
     public int Level { get; protected set; }
     public abstract decimal CalculateRevenue();
     public abstract decimal CalculateIncome();

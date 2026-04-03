@@ -5,6 +5,7 @@ var game = new Company("firma 1", 5000000m, new List<Building>());
 var testWreHouse = new Warehouse(1,"testWreHouse", 1, 10000,1,10,0);
 game.BuyBuilding(testWreHouse, 0);
 
+builder.Services.AddControllers();
 builder.Services.AddSingleton(game);
 builder.Services.AddHostedService<GameEngineService>();
 
@@ -18,7 +19,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.MapControllers();
 
 app.Run();
 

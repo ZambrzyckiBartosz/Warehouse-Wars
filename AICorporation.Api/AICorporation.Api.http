@@ -1,6 +1,8 @@
 @AICorporation.Api_HostAddress = http://localhost:5094
 
 GET {{AICorporation.Api_HostAddress}}/weatherforecast/
+###
+GET http://localhost:5094/Company/
 Accept: application/json
 
 ###
