@@ -1,10 +1,11 @@
 using AICorporation.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using AICorporation.Infrastructure;
+using AICorporation.Api.Services;
 var builder = WebApplication.CreateBuilder(args);
 
-var game = new Company("firma 1", 5000000m);
-var testWreHouse = new Warehouse(1,"testWreHouse", 1, 10000,1,10,0);
+var game = new Company("firma 1", 5000000m, new List<Building>());
+var testWreHouse = new Warehouse(1, 1, 10000,1,10,0);
 game.BuyBuilding(testWreHouse, 0);
 
 builder.Services.AddDbContext<AppDbContext>(options =>

@@ -1,5 +1,7 @@
 using AICorporation.Core.Models;
 using Microsoft.AspNetCore.Mvc;
+
+namespace AICorporation.Api.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class CompanyController : ControllerBase

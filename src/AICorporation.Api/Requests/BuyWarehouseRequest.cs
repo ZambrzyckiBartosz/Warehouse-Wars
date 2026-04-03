@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using AICorporation.Core.Models;
+
+namespace AICorporation.Api.Requests;
 public class BuyWarehouseRequest
 {
     [Required]

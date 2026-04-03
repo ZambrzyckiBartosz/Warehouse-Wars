@@ -1,5 +1,7 @@
 using AICorporation.Core.Models;
 using AICorporation.Infrastructure;
+
+namespace AICorporation.Api;
 public class CompanyService
 {
     private AppDbContext _context;
@@ -8,8 +10,4 @@ public class CompanyService
         _context = company;
     }
 
-    public bool ProcessWarehousePurchase(BuyWarehouseRequest request)
-    {
-        return true;
-    }
 }

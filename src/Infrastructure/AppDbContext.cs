@@ -18,10 +18,9 @@ public class Inventory
     public int id { get; set; }
     public int userid { get; set; }
 
+    public int type { get; set; }
     public int level { get; set; }
-    public int warehouseid { get; set; }
-    public Warehouse? warehouse { get; set; }
-    public int quantity { get; set; }
+
 }
 public class AppDbContext : DbContext
 {

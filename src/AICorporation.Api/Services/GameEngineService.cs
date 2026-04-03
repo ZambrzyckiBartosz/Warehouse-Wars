@@ -1,6 +1,8 @@
 using AICorporation.Core.Models;
 using AICorporation.Infrastructure;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+
+namespace AICorporation.Api.Services;
 public class GameEngineService : BackgroundService
 {
     public IServiceScopeFactory _scopeFactory { get; }
@@ -16,22 +18,28 @@ public class GameEngineService : BackgroundService
             using (var serviceScope = _scopeFactory.CreateScope())
             {
                 var db = serviceScope.ServiceProvider.GetService<AppDbContext>();
-                var myCompany = db.Users.FirstOrDefault();
+                var myCompany = db?.Users.Include(u => u.inventory).FirstOrDefault();
                 if (myCompany != null)
                 {
                     List<Building> tempBuildings = new List<Building>();
-                    foreach (var building in myCompany.inventory)
-                    {
-                        for (int i = 0; i < building.quantity; i++)
+                    if (myCompany.inventory != null)
+                        foreach (var building in myCompany.inventory)
                         {
-                            tempBuildings.Add(new Warehouse());
+                            tempBuildings.Add(BuidlingFactory.BuildNewFactory((BuildingType)building.type).Item1);
+                        }
+
+                    if (myCompany.CompanyName != null)
+                    {
+                        var tempCompany = new Company(myCompany.CompanyName,myCompany.ComapnyBalance, tempBuildings);
+                        tempCompany.ReceiveIncome(tempCompany.TotalIncome());
+                        if (myCompany != null)
+                        {
+                            myCompany.ComapnyBalance = tempCompany.CompanyBalance;
+                            Console.WriteLine($"{myCompany.CompanyName} {myCompany.ComapnyBalance}");
                         }
                     }
-                    var tempCompany = new Company(myCompany.CompanyName,myCompany.ComapnyBalance);
-                    tempCompany.ReceiveIncome(tempCompany.TotalIncome());
-                    myCompany.ComapnyBalance = tempCompany.CompanyBalance;
-                    Console.WriteLine($"{myCompany.CompanyName} {myCompany.ComapnyBalance}");
-                    db.SaveChanges();
+
+                    db?.SaveChanges();
                 }
             }
             await Task.Delay(1000, stoppingToken);

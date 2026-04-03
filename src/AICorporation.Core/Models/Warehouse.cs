@@ -2,10 +2,9 @@
 
 public class Warehouse : Building
 {
-       public Warehouse(int id, string? name, int level,int maxCapacity,int currentStock, decimal revenuePerItem, decimal baseMaintanceCost)
+       public Warehouse(int id,  int level,int maxCapacity,int currentStock, decimal revenuePerItem, decimal baseMaintanceCost)
        {
               ID = id;
-              Name = name;
               Level = level;
               MaxCapacity = maxCapacity;
               CurrentStock = currentStock;
