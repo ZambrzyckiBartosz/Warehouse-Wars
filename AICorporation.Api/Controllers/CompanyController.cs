@@ -20,12 +20,10 @@ public class CompanyController : ControllerBase
     [HttpPost("buy-warehouse")]
     public ActionResult<Company> CompanyUpdate([FromBody] BuyWarehouseRequest request)
     {
-        if (request.Name != null)
+        if (request.Name != null && request.Type != null)
         {
-            var newWarehouse = new Warehouse(2137,request.Name,1,50000,10000,31,5);
-            var newWarehouseCost = 4213;
-
-            if(!_company.BuyBuilding(newWarehouse,newWarehouseCost)) return BadRequest("U are poor guy");
+            var resultFactory = BuidlingFactory.BuildNewFactory(request.Type.Value,  request.Name);
+            _company.BuyBuilding(resultFactory.Item1, resultFactory.Item2);
         }
 
         return Ok(_company);

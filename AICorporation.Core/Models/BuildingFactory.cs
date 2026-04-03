@@ -9,11 +9,11 @@ public class BuidlingFactory
                case BuildingType.smallWarehouse:
                     return (new Warehouse(100, name, 1, 100, 1, 10, 100), 25);
                case BuildingType.mediumWarehouse:
-                    return (new Warehouse(100, name, 1, 100, 1, 10, 100),50);
+                    return (new Warehouse(50, name, 1, 100, 1, 10, 100),50);
                case BuildingType.largeWarehouse:
-                    return (new Warehouse(100, name, 1, 100, 1, 10, 100), 100);
+                    return (new Warehouse(25, name, 1, 100, 1, 10, 100), 100);
                default:
-                    return (new Warehouse(100, name, 1, 100, 1, 10, 100), 100);
+                    return (new Warehouse(2137, name, 1, 100, 1, 10, 100), 100);
           }
      }
 }
