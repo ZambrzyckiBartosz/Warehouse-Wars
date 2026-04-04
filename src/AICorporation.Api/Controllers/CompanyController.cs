@@ -1,3 +1,4 @@
+using AICorporation.Api.Requests;
 using AICorporation.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,22 +14,17 @@ public class CompanyController : ControllerBase
         _company = company;
     }
 
-    //[HttpGet]
-  /*  public Company GetCompanyInfo()
+    [HttpGet]
+    public Company GetCompanyInfo()
     {
-        return _company;
+        return _company.GetCompanyInfo();
     }
 
-    [HttpPost("buy-warehouse")]
-    public ActionResult<Company> CompanyUpdate([FromBody] BuyWarehouseRequest request)
+     [HttpPost("buy-warehouse")]
+    public ActionResult<Company> CompanyUpdate([FromBody] BuyWarehouseRequest request )
     {
-        if (request.Name != null && request.Type != null)
-        {
-            var resultFactory = BuidlingFactory.BuildNewFactory(request.Type.Value,  request.Name);
-            _company.BuyBuilding(resultFactory.Item1, resultFactory.Item2);
-        }
-
-        return Ok(_company);
+        var result = _company.BuyWarehouseHanlder(request);
+        return Ok(result);
     }
-    */
+
 }
