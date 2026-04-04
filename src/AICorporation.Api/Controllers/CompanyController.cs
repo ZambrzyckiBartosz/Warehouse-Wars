@@ -28,11 +28,4 @@ public class CompanyController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("register")]
-    public async Task<ActionResult> RegisterUser([FromBody] RegisterRequest request)
-    {
-        await _company.RegisterHanlder(request);
-        return Ok();
-    }
-
 }
