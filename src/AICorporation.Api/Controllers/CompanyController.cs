@@ -1,4 +1,5 @@
 using AICorporation.Api.Requests;
+using AICorporation.Api.Services;
 using AICorporation.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,16 +16,23 @@ public class CompanyController : ControllerBase
     }
 
     [HttpGet]
-    public Company GetCompanyInfo()
+    public async Task<Company> GetCompanyInfo()
     {
-        return _company.GetCompanyInfo();
+        return await _company.GetCompanyInfo();
     }
 
      [HttpPost("buy-warehouse")]
-    public ActionResult<Company> CompanyUpdate([FromBody] BuyWarehouseRequest request )
+    public async Task<ActionResult<Company>> CompanyUpdate([FromBody] BuyWarehouseRequest request )
     {
-        var result = _company.BuyWarehouseHanlder(request);
+        var result = await _company.BuyWarehouseHanlder(request);
         return Ok(result);
+    }
+
+    [HttpPost("register")]
+    public async Task<ActionResult> RegisterUser([FromBody] RegisterRequest request)
+    {
+        await _company.RegisterHanlder(request);
+        return Ok();
     }
 
 }
