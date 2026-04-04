@@ -3,7 +3,7 @@ using AICorporation.Api.Services;
 using AICorporation.Core.Models;
 using AICorporation.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-namespace AICorporation.Api;
+namespace AICorporation.Api.Services;
 public class CompanyService
 {
     private AppDbContext _context;
@@ -57,6 +57,7 @@ public class CompanyService
 
     public async Task RegisterHanlder(RegisterRequest request)
     {
+        var hashPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
         _context.Users.Add(new User{username = request.Username, password = request.Password,
             CompanyName = request.CompanyName, ComapnyBalance = 5000000, inventory = new List<Inventory>()
     });
