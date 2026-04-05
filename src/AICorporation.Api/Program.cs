@@ -32,6 +32,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")).UseSnakeCaseNamingConvention());
 builder.Services.AddControllers();
 builder.Services.AddScoped<CompanyService>();
+builder.Services.AddScoped<AuthService>();
 builder.Services.AddHostedService<GameEngineService>();
 
 builder.Services.AddOpenApi();

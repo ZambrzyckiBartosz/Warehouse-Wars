@@ -1,11 +1,7 @@
-using System.IdentityModel.Tokens.Jwt;
 using AICorporation.Api.Requests;
 using AICorporation.Core.Models;
 using AICorporation.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
 
 namespace AICorporation.Api.Services;
 public class CompanyService

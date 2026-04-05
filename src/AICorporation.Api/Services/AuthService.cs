@@ -5,7 +5,7 @@ using System.Text;
 using AICorporation.Api.Requests;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-
+using AICorporation.Core.Models;
 
 namespace AICorporation.Api.Services;
 public class AuthService
