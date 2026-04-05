@@ -6,15 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace AICorporation.Api.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class CompanyController : ControllerBase
+public class CompanyController(CompanyService _company) : ControllerBase
 {
-    private readonly CompanyService _company;
-
-    public CompanyController(CompanyService company)
-    {
-        _company = company;
-    }
-
     [HttpGet]
     public async Task<Company> GetCompanyInfo()
     {

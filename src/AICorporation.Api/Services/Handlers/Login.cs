@@ -1,33 +1,15 @@
-using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
-using AICorporation.Infrastructure;
+using System.Security.Claims;
 using System.Text;
 using AICorporation.Api.Requests;
+using AICorporation.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using AICorporation.Core.Models;
 
 namespace AICorporation.Api.Services;
-public class AuthService
+
+public class Login(AppDbContext _context, IConfiguration _configuration)
 {
-    private AppDbContext _context;
-    private IConfiguration _configuration;
-
-    public AuthService(AppDbContext context, IConfiguration configuration)
-    {
-        _context = context;
-        _configuration = configuration;
-    }
-
-    public async Task RegisterHanlder(RegisterRequest request)
-    {
-        var hashPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
-        _context.Users.Add(new User{username = request.Username, password = hashPassword,
-            CompanyName = request.CompanyName, ComapnyBalance = 5000000, inventory = new List<Inventory>()
-        });
-        await _context.SaveChangesAsync();
-    }
-
     public async Task<string> LoginHanlder(SendLoginRequest request)
     {
         var myUser = await _context.Users.FirstOrDefaultAsync(u => u.username == request.Name);

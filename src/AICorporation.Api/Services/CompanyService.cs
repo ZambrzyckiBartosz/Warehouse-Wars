@@ -4,16 +4,8 @@ using AICorporation.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace AICorporation.Api.Services;
-public class CompanyService
+public class CompanyService(AppDbContext _context)
 {
-    private AppDbContext _context;
-    private IConfiguration _configuration;
-    public CompanyService(AppDbContext company, IConfiguration configuration)
-    {
-        _context = company;
-        _configuration = configuration;
-    }
-
     public async Task<Company> GetCompanyInfo()
     {
         var myCompany = await _context.Users.Include(u => u.inventory).OrderBy(u => u.id).FirstOrDefaultAsync();

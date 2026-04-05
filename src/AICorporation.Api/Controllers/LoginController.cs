@@ -7,22 +7,8 @@ namespace AICorporation.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AuthController : ControllerBase
+public class LoginController(Login _company) : ControllerBase
 {
-    private readonly AuthService _company;
-
-    private AuthController(AuthService company)
-    {
-        _company = company;
-    }
-    [HttpPost("register")]
-
-    public async Task<ActionResult> RegisterUser([FromBody] RegisterRequest registerRequest)
-    {
-        await _company.RegisterHanlder(registerRequest);
-        return Ok();
-    }
-
     [HttpPost("login")]
 
     public async Task<ActionResult> LoginUser([FromBody] SendLoginRequest loginRequest)
