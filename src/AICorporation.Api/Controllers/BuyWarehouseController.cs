@@ -6,18 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace AICorporation.Api.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class CompanyController(CompanyService _company) : ControllerBase
+public class BuyWarehouseController(BuyWarehouse _company) : ControllerBase
 {
-    [HttpGet]
-    public async Task<Company> GetCompanyInfo()
-    {
-        return await _company.GetCompanyInfo();
-    }
 
-     [HttpPost("buy-warehouse")]
+    [HttpPost("buy-warehouse")]
     public async Task<ActionResult<Company>> CompanyUpdate([FromBody] BuyWarehouseRequest request )
     {
-        var result = await _company.BuyWarehouseHanlder(request);
+        var result = await _company.BuyWarehouseAsync(request);
         return Ok(result);
     }
 

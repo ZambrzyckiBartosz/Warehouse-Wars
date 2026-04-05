@@ -3,14 +3,8 @@ using AICorporation.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace AICorporation.Api.Services;
-public class GameEngineService : BackgroundService
+public class GameEngineService(IServiceScopeFactory _scopeFactory) : BackgroundService
 {
-    public IServiceScopeFactory _scopeFactory { get; }
-
-    public GameEngineService(IServiceScopeFactory scopeFactory)
-    {
-        _scopeFactory = scopeFactory;
-    }
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)

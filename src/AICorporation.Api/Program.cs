@@ -31,7 +31,8 @@ game.BuyBuilding(testWreHouse, 0);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")).UseSnakeCaseNamingConvention());
 builder.Services.AddControllers();
-builder.Services.AddScoped<CompanyService>();
+builder.Services.AddScoped<BuyWarehouse>();
+builder.Services.AddScoped<GetCompanyInfo>();
 builder.Services.AddScoped<Login>();
 builder.Services.AddScoped<Register>();
 builder.Services.AddHostedService<GameEngineService>();
