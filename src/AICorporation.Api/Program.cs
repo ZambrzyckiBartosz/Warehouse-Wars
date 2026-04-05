@@ -9,7 +9,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string? jwtKey = builder.Configuration["JwtKey"];
+string? jwtKey = builder.Configuration["JwtSettings:Key"];
 if (string.IsNullOrEmpty(jwtKey))
 {
     throw new ArgumentException("JWTKey must be provided");

@@ -24,7 +24,7 @@ public class Login(AppDbContext _context, IConfiguration _configuration)
         }
 
         var claims = new[] { new Claim(ClaimTypes.NameIdentifier, myUser.id.ToString()) };
-        var keyByteArray = Encoding.UTF8.GetBytes(_configuration["JwtKey"] ?? "elo320potrzeba32znakowtodolozejeszczepareboczemuniexd67");
+        var keyByteArray = Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"] ?? "elo320potrzeba32znakowtodolozejeszczepareboczemuniexd67");
         var key = new SymmetricSecurityKey(keyByteArray);
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 

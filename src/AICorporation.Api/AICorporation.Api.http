@@ -9,10 +9,14 @@ GET http://localhost:5094/Company/
 POST http://localhost:5094/Company/buy-warehouse
 Accept: application/json
 Content-Type: application/json
+###
+POST http://localhost:5094/Register
+Content-Type: application/json
 
 {
-  "name": "siemaneczko",
-  "type": 2
+  "Username": "SzefWszystkichSzefow",
+  "Password": "MojeSuperHaslo123",
+  "CompanyName": "JanuszPol"
 }
 
 

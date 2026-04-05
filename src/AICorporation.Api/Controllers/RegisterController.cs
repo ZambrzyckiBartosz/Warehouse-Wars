@@ -9,7 +9,7 @@ namespace AICorporation.Api.Controllers;
 [Route("[controller]")]
 public class RegisterController(Register _company) : ControllerBase
 {
-    [HttpPost("register")]
+    [HttpPost]
 
     public async Task<ActionResult> RegisterUser([FromBody] RegisterRequest registerRequest)
     {

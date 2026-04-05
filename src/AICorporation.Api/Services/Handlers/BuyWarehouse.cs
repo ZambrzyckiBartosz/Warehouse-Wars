@@ -7,9 +7,9 @@ namespace AICorporation.Api.Services;
 
 public class BuyWarehouse(AppDbContext _context)
 {
-    public async Task<Company> BuyWarehouseAsync(BuyWarehouseRequest request)
+    public async Task<Company> BuyWarehouseAsync(BuyWarehouseRequest request, int userID)
     {
-        var myCompany = await _context.Users.Include(u => u.inventory).OrderBy(u => u.id).FirstOrDefaultAsync();
+        var myCompany = await _context.Users.Include(u => u.inventory).FirstOrDefaultAsync(u => u.id == userID);
         if (myCompany == null) return new Company("straszna chujnia" ?? "jakis noname", 420, new List<Building>());
         if (!(request.Type.HasValue && request.Type.Value > 0))
         {
